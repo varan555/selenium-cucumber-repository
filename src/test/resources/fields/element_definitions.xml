@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../fields/xsd/element_rules.xsd">
+    <Page name="Главная">
+        <TextInput name="Строка поиска" locator="//input[@aria-label='Запрос' and @id='text']"/>
+        <Button name="Найти" locator="//button[.//*[text()='Найти']]"/>
+    </Page>
+    <Page name="Резульат поиска">
+        <Collection name="Список результатов" locator="//ul[@aria-label='Результаты поиска']/li" isLoaded="true">
+            <StaticText name="Заголовок" locator=".//*[contains(@class, '__url-text')]"/>
+            <Link name="Ссылка" locator=".//a[contains(@class, 'link_theme_outer')]/b"/>
+        </Collection>
+    </Page>
+    <Page name="Главная страница">
+        <Collection name="Главное меню"
+                    locator="//ul[@class='main-menu']/li">
+            <Button name="Наименование" template="" customType="" waitTimeOut="" locator="." isLoaded=""/>
+        </Collection>
+        <Collection name="Подменю" locator="//a[@class='menu-section-link']">
+            <Button name="Наименование" locator="."/>
+        </Collection>
+    </Page>
+    <Page name="Кредитные карты">
+        <Button name="Оформить карту" locator="//a[contains(text(),'без %')]/../..//a[contains(text(),'Оформить карту')]"
+                isLoaded="true"/>
+    </Page>
+    <Page name="Заявление на кредитную карту" waitTimeOut="5000">
+        <StaticText name="Заголовок" locator="//h3[contains(text(),'Оставьте заявку сейчас')]" isLoaded="true"/>
+        <TextInput name="Фамилия, Имя и Отчество"/>
+        <TextInput name="Дата рождения"/>
+        <TextInput name="Email"/>
+        <Collection name="Осталось заполнить поля"
+                    locator="//div[contains(text(),'Осталось заполнить поля:')]/..//span">
+            <StaticText name="Осталось поле" locator="."/>
+        </Collection>
+    </Page>
+</Pages>
